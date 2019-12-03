@@ -57,7 +57,7 @@ public class YahtzeeClient1 {
 			if (round <= 13)
 			{
 				System.out.println("_________________________");
-				System.out.println("Round " + round + " of 4" );
+				System.out.println("Round " + round + " of 13" );
 		    	System.out.println("Your current scoring status is:");
 		    	currentScore = YahtzeeSinglePlayer.showCurrentScore(currentScoreRecord);
 		    	
