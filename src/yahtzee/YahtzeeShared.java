@@ -46,24 +46,24 @@ public class YahtzeeShared {
 	public synchronized String processInput(String myThreadName, String theInput)
 	{
 		String theOutput = null;
-		if (theInput.equalsIgnoreCase("Thanks for playing"))
+		if (theInput.equalsIgnoreCase("Thanks for playing")) //Output from client
 		{
-			theOutput = "Game over";
+			theOutput = "Game over"; //Prints to client prompting closure
 		}
 		
-		if (theInput.equalsIgnoreCase("GAME OVER"))
+		if (theInput.equalsIgnoreCase("GAME OVER")) //If server reads game over
 		{
-			if (myThreadName.equals("YahtzeeServerThread1"))
+			if (myThreadName.equals("YahtzeeServerThread1")) //Player 1
 			{
-				finish1 = true;
-				theOutput = "We are gathering the results. Please wait";
+				finish1 = true; //Finish status goes to true
+				theOutput = "We are gathering the results. Please wait"; //Prints this message to client until all clients are true
 			}
-			else if (myThreadName.equalsIgnoreCase("YahtzeeServerThread2"))
+			else if (myThreadName.equalsIgnoreCase("YahtzeeServerThread2")) //Player 2
 			{
 				finish2 = true;
 				theOutput = "We are gathering the results. Please wait";
 			}
-			else if (myThreadName.equalsIgnoreCase("YahtzeeServerThread3"))
+			else if (myThreadName.equalsIgnoreCase("YahtzeeServerThread3")) //Player 3
 			{
 				finish3 = true;
 				theOutput = "We are gathering the results. Please wait";
@@ -72,6 +72,7 @@ public class YahtzeeShared {
 			{
 				String winner = winnerDecider();
 				
+				//Switch statement returns winner depending on who scored more
 				switch(winner) 
 				{
 				case "Player1":
@@ -98,10 +99,10 @@ public class YahtzeeShared {
 				if (mySharedVariable == round1)
 				{
 					score1 = Integer.parseInt(theInput); //Recognises the score that the player got
-					System.out.println(round1);
+					//System.out.println(round1);
 					theOutput = "Round " + round1 + ". Score is currently " + score1 + ". Player 2 is on " + score2 + ", and Player 3 is on " + score3;
 					round1 ++; //Increases the round by 1
-					System.out.println(round1);
+					//System.out.println(round1);
 					roundMatching(); //Checks to see if everyone is on the same round
 				}
 				else
@@ -114,10 +115,10 @@ public class YahtzeeShared {
 				if (mySharedVariable == round2)
 				{					
 					score2 = Integer.parseInt(theInput); //Recognises the score that the player got
-					System.out.println(round2);
+					//System.out.println(round2);
 					theOutput = "Round " + round2 + ". Score is currently " + score2 + ". Player 1 is on " + score1 + ", and Player 3 is on " + score3;
 					round2 ++; //Increases the round by 1
-					System.out.println(round2);
+					//System.out.println(round2);
 					roundMatching();
 				}
 				else
@@ -130,10 +131,10 @@ public class YahtzeeShared {
 				if (mySharedVariable == round3)
 				{
 					score3 = Integer.parseInt(theInput); //Recognises the score that the player got
-					System.out.println(round3);
+					//System.out.println(round3);
 					theOutput = "Round " + round3 + ". Score is currently " + score3 + ". Player 1 is on " + score1 + ", and Player 2 is on " + score2;
 					round3 ++; //Increases the round by 1
-					System.out.println(round3);
+					//System.out.println(round3);
 					roundMatching();
 				}
 				else
@@ -148,7 +149,7 @@ public class YahtzeeShared {
 		}
 		
 		
-		System.out.println(mySharedVariable);
+		//System.out.println(mySharedVariable);
 		System.out.println(theOutput);
 		return theOutput;
 	}

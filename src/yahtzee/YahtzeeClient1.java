@@ -117,13 +117,14 @@ public class YahtzeeClient1 {
 	
 			while (fromServer.equals("Rounds not matching"))
 			{
-				System.out.println("Please wait. Other players have now taken their turn yet.");
-				fromUser = stdIn.readLine();
+				System.out.println("Please wait. Other players have now taken their turn yet."); //Prints to console
+				fromUser = stdIn.readLine(); //User presses enter
 				out.println(YahtzeeSinglePlayer.showCurrentScore(currentScoreRecord));
 				fromServer = in.readLine();
+				//Loop continues until all clients are on the same round
 			}
-			System.out.println(fromServer);
-			round ++;
+			System.out.println(fromServer); //Prints server output
+			round ++; //Round increases by 1
 			
 			while (round >= 14)
 			{
@@ -131,14 +132,15 @@ public class YahtzeeClient1 {
 				fromServer = in.readLine();
 				System.out.println("All rounds completed. Press Enter to continue");
 				fromUser = stdIn.readLine();
-				out.println("GAME OVER");
+				out.println("GAME OVER"); //Prints to server
 				fromServer = in.readLine();
 				System.out.println(fromServer);
-				if (fromServer.contains("Winner"))
+				if (fromServer.contains("Winner")) //Reads the console output
 				{
-					out.println("Thanks for playing");
+					out.println("Thanks for playing"); //Prints to server
 					fromServer = in.readLine();
 					System.out.println(fromServer);
+					//Closes client down
 					out.close();
 					in.close();
 					stdIn.close();
